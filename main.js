@@ -1,9 +1,25 @@
-var money = 'my money';
-var income = 50000; 
-let addExpenses = 'add expenses';
-let deposit = 10000;
-const mission = 'my mission'; 
-const period = '1 month';
+var money = 180000;
+var income = 'teaching'; 
+var addExpenses = 'Rent, Bus, Mobile, Internet';
+var deposit = true;
+var mission = 2000000; 
+var period = 12;
 
-alert('hi there!');
-console.log('I just started my JS course');
+console.log('money ' + money);
+console.log('income ' + income);
+console.log('deposit ' + deposit);
+console.log('addExpenses length ' + addExpenses.length);
+console.log('period is equal to ' + period + ' months and the goal is ' + mission + ' rubles');
+
+console.log('addExpenses lower case ' + addExpenses.toLowerCase());
+
+console.log('addExpenses array ');
+console.log(addExpenses.split(', '));
+
+var budgetDay = 180000 / 30;
+console.log('budgetDay  ' + budgetDay);
+
+
+
+
+
