@@ -1,6 +1,6 @@
 var money = 'my money';
 var income = 50000; 
-let addExpenses = true;
+let addExpenses = 'add expenses';
 let deposit = 10000;
 const mission = 'my mission'; 
 const period = '1 month';
