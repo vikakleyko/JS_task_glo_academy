@@ -40,11 +40,11 @@ let array = [
 ];
 
 let newArray = array
-  .filter((item) => {
+  .filter(item => {
     "use strict";
     return item[0] === lang;
   })
-  .map((item) => {
+  .map(item => {
     "use strict";
     return item[1];
   });
@@ -54,9 +54,6 @@ console.log(newArray);
 // task 2
 const namePerson = prompt("enter name: ");
 
-var result =
-  namePerson === "Артем" ? "директор"
-    : namePerson === "Максим" ? "преподаватель"
-    : "студент";
+var result = namePerson === "Артем" ? "директор" : namePerson === "Максим" ? "преподаватель" : "студент";
 
 console.log(result);
