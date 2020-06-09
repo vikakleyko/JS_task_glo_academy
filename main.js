@@ -5,65 +5,75 @@ var deposit = true;
 var mission = 200000;
 var period = 12;
 
-console.log("money " + money);
-console.log("income " + income);
-console.log("deposit " + deposit);
-console.log("addExpenses length " + addExpenses.length);
-console.log(
-  "period is equal to " +
-    period +
-    " months and the goal is " +
-    mission +
-    " rubles"
-);
-
-console.log("addExpenses lower case " + addExpenses.toLowerCase());
-
-console.log("addExpenses array ");
-console.log(addExpenses.split(", "));
-
 var budgetDay = 180000 / 30;
-console.log("budgetDay  " + budgetDay);
 
-console.log("----------------------------------");
-console.log("lesson_03");
+money = +prompt("money per month: ", money);
 
-// lesson 3
-money = +prompt("money per month: ");
-console.log("money: " + money);
-
-addExpenses = prompt("possible expenses (school, doctor, etc): ");
+addExpenses = prompt("possible expenses (school, doctor, etc): ", "cinema, circus");
 
 const haveDeposit = confirm("do you have deposit? (yes/no) ");
 
-const expenses1 = prompt("obligatory expenses1: ");
-const expenses2 = prompt("obligatory expenses2: ");
-console.log("obligatory expenses: " + expenses1, expenses2);
+const expenses1 = prompt("obligatory expenses1: ", "school");
+const expenses2 = prompt("obligatory expenses2: ", "doctor");
 
-const amount1 = +prompt("amout1: ");
-const amount2 = +prompt("amount2: ");
+const amount1 = +prompt("amout1: ", 30000);
+const amount2 = +prompt("amount2: ", 55000);
 
-var budgetMonth = money - amount1 - amount2;
-console.log("budget month: " + budgetMonth);
+
+// lesson 4
+console.log("----------------------------------");
+console.log("lesson_04");
+console.log("----------------------------------");
+
+let showTypeOf = function(data) {
+  "use strict";
+  console.log(data, typeof(data));
+};
+
+showTypeOf(money);
+showTypeOf(income);
+showTypeOf(deposit);
+
+function getExpensesMonth(a, b) {
+  "use strict";
+  return a + b;
+}
+
+function getAccumulatedMonth(money, a, b) {
+  "use strict";
+  return money - a - b;
+}
+
+console.log("money " + money);
+console.log("obligatory expenses: " + expenses1 + ", " + expenses2);
+console.log("getExpensesMonth: " + getExpensesMonth(amount1, amount2));
+console.log("possible expenses: ");
+console.log(addExpenses.split(", "));
+
+const accumulatedMonth = getAccumulatedMonth(money, amount1, amount2);
+
+function getTargetMonth() {
+  "use strict";
+  return Math.ceil(mission / accumulatedMonth);
+}
 
 console.log("mission: " + mission);
+console.log("getTargetMonth: " + getTargetMonth());
 
-var amountOfMonths = Math.ceil(mission / budgetMonth);
-if (amountOfMonths > 0) {
-    console.log("you can reach your mission in : " + amountOfMonths + " months");
-} else {
-    console.log("not enough money, need another job");
-}
-
-budgetDay = Math.round(budgetMonth / 30);
+budgetDay = Math.round(accumulatedMonth / 30);
 console.log("budget day: " + budgetDay);
 
-if (budgetDay >= 1200) {
-  console.log("high income");
-} else if (600 <= budgetDay && budgetDay < 1200) {
-  console.log("middle income");
-} else if (0 <= budgetDay && budgetDay < 600) {
-  console.log("low income");
-} else {
-  console.log("something went wrong");
-}
+let getStatusIncome = function() {  
+  "use strict";
+  if (budgetDay >= 1200) {
+    return ("high income");
+  } else if (600 <= budgetDay && budgetDay < 1200) {
+    return ("middle income");
+  } else if (0 <= budgetDay && budgetDay < 600) {
+    return ("low income");
+  } else {
+    return ("something went wrong");
+  }
+};
+
+console.log("getStatusIncome:  " + getStatusIncome());
