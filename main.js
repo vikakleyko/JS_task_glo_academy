@@ -25,6 +25,8 @@ console.log(addExpenses.split(", "));
 var budgetDay = 180000 / 30;
 console.log("budgetDay  " + budgetDay);
 
+console.log("----------------------------------");
+console.log("lesson_03");
 
 // lesson 3
 money = +prompt("money per month: ");
@@ -46,21 +48,22 @@ console.log("budget month: " + budgetMonth);
 
 console.log("mission: " + mission);
 
-var savingsPerMonth = Math.ceil(mission/budgetMonth);
-console.log("you can reach your mission in : " + savingsPerMonth + " months");
-
-budgetDay =  Math.round(budgetMonth / 30);
-console.log("budget day: " + budgetDay);
-
-if (budgetDay >= 1200 ) {
-    console.log("high income");
-} else 
-if ( 600 <= budgetDay && budgetDay < 1200) {
-    console.log("middle income");
-} else 
-if ( 0 <= budgetDay && budgetDay < 600) {
-    console.log("low income");
+var amountOfMonths = Math.ceil(mission / budgetMonth);
+if (amountOfMonths > 0) {
+    console.log("you can reach your mission in : " + amountOfMonths + " months");
 } else {
-    console.log("something went wrong");
+    console.log("not enough money, need another job");
 }
 
+budgetDay = Math.round(budgetMonth / 30);
+console.log("budget day: " + budgetDay);
+
+if (budgetDay >= 1200) {
+  console.log("high income");
+} else if (600 <= budgetDay && budgetDay < 1200) {
+  console.log("middle income");
+} else if (0 <= budgetDay && budgetDay < 600) {
+  console.log("low income");
+} else {
+  console.log("something went wrong");
+}
