@@ -1,79 +1,119 @@
-var money = 120000;
-var income = "teaching";
-var addExpenses = "Rent, Bus, Mobile, Internet";
-var deposit = true;
-var mission = 200000;
-var period = 12;
+"use strict";
+
+let money,
+  income = "teaching",
+  addExpenses = "Rent, Bus, Mobile, Internet",
+  deposit = true,
+  mission = 200000,
+  period = 12;
 
 var budgetDay = 180000 / 30;
-
-money = +prompt("money per month: ", money);
-
-addExpenses = prompt("possible expenses (school, doctor, etc): ", "cinema, circus");
+addExpenses = prompt(
+  "possible expenses: ",
+  "cinema, circus"
+);
 
 const haveDeposit = confirm("do you have deposit? (yes/no) ");
 
-const expenses1 = prompt("obligatory expenses1: ", "school");
-const expenses2 = prompt("obligatory expenses2: ", "doctor");
+// const expenses1 = prompt("obligatory expenses1: ", "school");
+// const expenses2 = prompt("obligatory expenses2: ", "doctor");
 
-const amount1 = +prompt("amout1: ", 30000);
-const amount2 = +prompt("amount2: ", 55000);
+// const amount1 = +prompt("amout1: ", 30000);
+// const amount2 = +prompt("amount2: ", 55000);
 
-
-// lesson 4
-console.log("----------------------------------");
-console.log("lesson_04");
-console.log("----------------------------------");
-
-let showTypeOf = function(data) {
-  "use strict";
-  console.log(data, typeof(data));
+let showTypeOf = function (data) {
+  console.log(data, typeof data);
 };
 
-showTypeOf(money);
-showTypeOf(income);
-showTypeOf(deposit);
+// showTypeOf(money);
+// showTypeOf(income);
+// showTypeOf(deposit);
 
-function getExpensesMonth(a, b) {
-  "use strict";
-  return a + b;
+// lesson 5
+console.log("----------------------------------");
+console.log("lesson_05");
+console.log("----------------------------------");
+
+let isNumber = function (n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+};
+
+let start = function () {
+  do {
+    money = prompt("money per month: ");
+  } while (!isNumber(money));
+};
+
+start();
+
+let expenses = [];
+
+function getExpensesMonth() {
+  let sum = 0;
+
+  for (let i = 0; i < 2; i++) {
+    let amount;
+    expenses[i] = prompt("obligatory expenses: ");
+    while (!isNumber(amount)) {
+      amount = prompt("expenses amount: ");
+    }
+    sum += +amount;
+  }
+  return sum;
 }
 
-function getAccumulatedMonth(money, a, b) {
-  "use strict";
-  return money - a - b;
+let expensesAmount = getExpensesMonth();
+
+function getAccumulatedMonth() {
+  return money - expensesAmount;
 }
 
 console.log("money " + money);
-console.log("obligatory expenses: " + expenses1 + ", " + expenses2);
-console.log("getExpensesMonth: " + getExpensesMonth(amount1, amount2));
+console.log("----------------------------------");
+console.log("obligatory expenses: ");
+console.log(expenses);
+console.log("----------------------------------");
+console.log("expenses per month: " + expensesAmount);
+console.log("----------------------------------");
 console.log("possible expenses: ");
-console.log(addExpenses.split(", "));
+console.log(addExpenses.toLowerCase().split(", "));
+console.log("----------------------------------");
 
-const accumulatedMonth = getAccumulatedMonth(money, amount1, amount2);
+const accumulatedMonth = getAccumulatedMonth();
 
 function getTargetMonth() {
-  "use strict";
   return Math.ceil(mission / accumulatedMonth);
 }
 
+let targetMonth = getTargetMonth();
+
+let canReachGoal = function() {
+  if (targetMonth >= 0) {
+    return ("you can reach the goal!");
+  } else {
+    return ("the goal cannot be reached:((");
+  }
+};
+
 console.log("mission: " + mission);
-console.log("getTargetMonth: " + getTargetMonth());
+console.log("getTargetMonth: " + targetMonth);
+console.log("----------------------------------");
+console.log("check if you can reah the goal: " + canReachGoal());
+console.log("----------------------------------");
 
 budgetDay = Math.round(accumulatedMonth / 30);
 console.log("budget day: " + budgetDay);
 
-let getStatusIncome = function() {  
-  "use strict";
+let getStatusIncome = function () {
   if (budgetDay >= 1200) {
-    return ("high income");
+    return "high income";
   } else if (600 <= budgetDay && budgetDay < 1200) {
-    return ("middle income");
+    return "middle income";
   } else if (0 <= budgetDay && budgetDay < 600) {
-    return ("low income");
+    return "low income";
   } else {
-    return ("something went wrong");
+    return "something went wrong";
   }
 };
 
-console.log("getStatusIncome:  " + getStatusIncome());
+console.log("status:  " + getStatusIncome());
